@@ -17,12 +17,12 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="#">Главная <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="<?=site_url('admin/pages/category/7/20');?>">Главная <span class="sr-only">(current)</span></a></li>
                     <li><a href="<?=site_url('admin/category/');?>">Категории</a></li>
                </ul>
                <ul class="nav navbar-nav navbar-right">
-                    <?=top_menu_links();?>
-                    <li><a href="#">Контакты</a></li>
+                    <?=top_menu_links(true); //admin?>
+                    <li><a href="<?=site_url('admin/pages/category/7/21');?>">Контакты</a></li>
                </ul>
           </div>
      </nav>

@@ -18,6 +18,7 @@ class Category_model extends CI_Model
         }
         
         $result = $this->db->where('parent_id', 0)
+                           ->where('hidden', 0)
                            ->order_by('order', 'ASC')
                            ->get('category')
                            ->result();
@@ -26,6 +27,7 @@ class Category_model extends CI_Model
 
     function get_count($where = '')
     {
+        $this->db->where('hidden', 0);
         if ($where) {
                 $this->db->where($where);
         }
@@ -41,6 +43,7 @@ class Category_model extends CI_Model
         
         $result = $this->db->order_by('order', 'ASC')
                            ->where('parent_id', $parent_id)
+                           ->where('hidden', 0)
                            ->get('category')
                            ->result();
         return $result;
@@ -64,6 +67,7 @@ class Category_model extends CI_Model
     function get_one_by_name($nameT)
     {
         $res = $this->db->where('name_t', $nameT)
+                    ->where('hidden', 0)
                     ->get('category')
                     ->result();
         return isset($res[0]) ? $res[0] : false;
@@ -94,7 +98,7 @@ class Category_model extends CI_Model
         if (!$one) {
             return false;
         }
-        $this->update_categoryes_order($one->order, "-", $one->id);
+        $this->update_categoryes_order($one->order, "-");
         return $this->db->delete('category', array('id' => $id));
     }
        
@@ -103,50 +107,12 @@ class Category_model extends CI_Model
           $query_str = "
                  UPDATE `category`
                  SET `order` = `order` $to 1
-                 WHERE `order` >= $order";
+                 WHERE `order` >= $order AND
+                      `hidden` = 0";
           if ($parent_id !== false) {
                $query_str .= " AND `parent_id` = {$parent_id}";
           }
           return $this->db->query($query_str);
     }
 
-    /**
-     * Check, is category exist.
-     * If exist - return cat_id, if not - create and return cat_id
-     */
-    function upload_price_category($name)
-    {
-         $res = array();
-         $query_sql = "SELECT `id` FROM `category` WHERE UPPER(`name`) LIKE UPPER('%{$name}%')";
-         $query = $this->db->query($query_sql);
-         $sql_res = $query->result();
-
-         if ($sql_res) { //category exist
-               $res['id'] = $sql_res[0]->id;
-               //$res['message'] = "Category $name exist";
-               $res['message'] = "";
-         } else {  //We should create category
-               $category_data = array();
-               $category_data['name'] = $name;
-               $category_data['name_t'] = translit_encode($category_data['name']);
-               $category_data['title'] = $name;
-               $category_data['description'] = $name;
-               $category_data['order'] = $this->get_count(array('parent_id' => 0)) + 1;
-               $category_data['public'] = 1;
-          
-               $this->db->insert('category', $category_data);
-               
-               $res['id'] = $this->db->insert_id();
-               $res['message'] = "Create category $name";
-          }
-          return $res;
-    }
-    
-    /**
-     * Delete all records and images
-     */
-    function delete_all()
-    {
-         $this->db->empty_table('category');
-    }
 }

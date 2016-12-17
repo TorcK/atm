@@ -39,6 +39,16 @@ body {
      height: 87px;
      background-image: url('/www/images/top-bg.png');
 }
+.dropdown-menu{
+     background-color:#000;
+}
+.dropdown-menu > li > a {
+     color:#FFF;
+}
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover {
+     background-color: #69be28;
+}
 
 /* footer */
 footer.container {

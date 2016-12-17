@@ -45,10 +45,11 @@ class Pages extends CI_Controller {
           echo json_encode($res);
     }
     
-     function category($category_id)
+     function category($category_id, $page_id = false)
      {
           $data['pages'] = $this->pages_model->getListByCategory($category_id);
           $data['cat_id'] = $category_id;
+          $data['edit_page_id'] = $page_id;
           $this->load->view('admin/pages/pages', $data);
      }
      

@@ -1,7 +1,6 @@
 <select name="order" class="form-control" id="formOrder">
     <?
-    $count_for = $count + 1;
-    for ($i = 1; $i <= $count_for; $i++) {
+    for ($i = 1; $i <= $count; $i++) {
           $selected = '';
           if ($one_order) {
                $selected = ($one_order == $i) ? 'selected = "selected"' : '';

@@ -17,6 +17,14 @@
      <? } ?>
      <script src="<?=site_url('/www/js/admin/pages.js');?>"></script>
      <script src="http://malsup.github.com/jquery.form.js"></script> 
+     <? if ($edit_page_id) {?>
+          <script>
+               $( document ).ready(function() {
+                    load(<?=$edit_page_id;?>);
+               });
+
+          </script>
+     <? } ?>
 </head>
 <body>
      <? $this->load->view('admin/inc/top'); ?>

@@ -22,7 +22,7 @@
                     <input type="text" size="40" name="name" value="<?=$name?>" class="form-control" id="formName" placeholder="Запускаем самолёт">
                </div>
                <div class="form-group">
-                    <label for="formText">Ключевые слова:</label>
+                    <label for="formText">Текст:</label>
                     <textarea name="text" rows="20" cols="60" class="form-control" id="formText" placeholder="Для запуска самолёта на понадобится..."><?=$text?></textarea>
                </div>
                <div class="form-group">
