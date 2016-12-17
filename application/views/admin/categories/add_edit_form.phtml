@@ -1,0 +1,57 @@
+<?
+     /* for edit one item */
+     $id = isset($one->id) ? $one->id : '';
+     $name = isset($one->name) ? $one->name : '';
+     $title = isset($one->title) ? $one->title : '';
+     $description = isset($one->description) ? $one->description : '';
+     $public_checked = (isset($one->public) && $one->public) ? 'checked = "checked"' : '';
+     $parent_id = isset($one->parent_id) ? $one->parent_id : 0;
+     $order = isset($one->order) ? $one->order : 0;
+
+     $order_count = isset($one->parent_id) ? count($sub_categories) : count($categories);
+?>
+<div class="col-md-6">
+     <form method="post" id="add-edit" name="add-edit">
+          <a name="add_edit"></a>
+          <fieldset class="add-edit">
+               <legend>Добавление или изменение категории</legend>
+               <input type="hidden" name="id" value="<?=$id?>"/>
+               <div class="form-group">
+                    <label for="formName">Название</label>
+                    <input type="text" size="40" name="name" value="<?=$name?>" class="form-control" id="formName" placeholder="Авиа">
+               </div>
+                    <!-- tr>
+                         <td class="title">Parent:</td>
+                         <td>
+                              <select name="parent_id" id="parent_id" onchange="update_sub_categories_count($('select#parent_id').val());">
+                                   <option value="0"></option>
+                                  <? foreach ($categories as $key => $one_cat) { 
+                                        $parent_selected = ($parent_id == $one_cat->id) ? 'selected = "selected"' : ''; ?>
+                                        <option value="<?=$one_cat->id;?>" <?=$parent_selected;?>><?=$one_cat->name;?></option>
+                                  <? } ?>
+                              </select>
+                         </td>
+                    </tr -->
+               <div class="form-group">
+                    <label for="formOrder">Позиция</label>
+                    <? $this->load->view("/admin/categories/add_edit_form_order.phtml", array('count' => $order_count, 'one_order' => $order)); ?>
+               </div>
+
+               <div class="form-group">
+                    <label for="formTitle">Заголовок страницы:</label>
+                    <textarea name="title" rows="1" cols="60" class="form-control" id="formTitle" placeholder="Ремонт самолётов в Харькове, обслуживание самолётов, починить самолёт Харьков"><?=$title?></textarea>
+               </div>
+
+               <div class="form-group">
+                    <label for="formDescription">Ключевые слова:</label>
+                    <textarea name="description" rows="2" cols="60" class="form-control" id="formTitle" placeholder="Ремонт самолётов Харьков, обслуживание самолётов, починить самолёт Харьков"><?=$title?></textarea>
+               </div>
+
+               <div class="form-group">
+                    <label for="formPublic">Активная</label>
+                    <input type="checkbox" name="public" <?=$public_checked?> class="form-control" id="formPublic">
+               </div>
+               <button type="button" class="btn btn-default" onclick="return add_edit_form_submit();">--></button>
+          </fieldset>
+     </form>
+</div>

@@ -1,0 +1,45 @@
+<? $zebra = 'zebra-hi'; ?>
+<table class="table">
+     <tr class="table-header">
+          <td>#</td>
+          <!-- td>##</td>
+          <td>Roditel'skaja</td -->
+          <td>Название</td>
+          <td>Заголовок</td>
+          <td>SEO описание</td>
+          <td>Активная</td>
+          <td>Действия</td>
+     </tr>
+     <? foreach ($categories as $key => $one) {
+          $zebra = $zebra == 'zebra-hi' ? 'zebra-lo' : 'zebra-hi';?>
+          <tr class="<?=$zebra;?>">
+               <td><?=$one->order;?></td>
+               <!-- td>&nbsp;</td -->
+               <td><a href='/admin/pages/category/<?=$one->id;?>'><?=$one->name;?></a></td>
+               <!-- td>&nbsp;</td -->
+               <td><?=$one->title?'+':'<b style="color:red;">нет</b>'?></td>
+               <td><?=$one->description?'+':'<b style="color:red;">нет</b>'?></td>
+               <td><?=$one->public?'Да':'Нет'?></td>
+               <td>
+                    <a href="#" title="Удалить категорию и все статьи" onclick="return remove(<?=$one->id?>);">[Удалить]</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" title="Редактировать категорию" onclick="return load(<?=$one->id?>);">[Редактировать]</a>
+               </td>
+          </tr>
+          <? /* foreach ($one->subcategories as $one_subcategory) { ?>
+               <? $zebra = $zebra == 'zebra-hi' ? 'zebra-lo' : 'zebra-hi';?>
+               <tr class="<?=$zebra;?>">
+                    <td>&nbsp;</td>
+                    <td><?=$one_subcategory->order;?></td>
+                    <td><?=$one_subcategory->name;?></td>
+                    <td>&nbsp;</td>
+                    <td><?=$one_subcategory->title?'+':'<b style="color:red;">нет</b>'?></td>
+                    <td><?=$one_subcategory->description?'+':'<b style="color:red;">нет</b>'?></td>
+                    <td><?=$one_subcategory->public?'Да':'Нет'?></td>
+                    <td>
+                         <a href="#" title="Удалить категорию и весь товар" onclick="return remove(<?=$one_subcategory->id?>);">Удалить</a>&nbsp;&nbsp;&nbsp;
+                         <a href="#" title="Редактировать категорию" onclick="return load(<?=$one_subcategory->id?>);">Редактировать</a>
+                    </td>
+               </tr>
+          <? } */ ?>
+     <? } ?>
+</table>
