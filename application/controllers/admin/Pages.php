@@ -82,4 +82,29 @@ class Pages extends CI_Controller {
          $res['html'] = $this->load->view('admin/pages/add_edit_form', $data, true);
          echo json_encode($res);
     }
+    
+    function upload_image()
+    {
+          $path = '/www/uploads/';
+          $config['upload_path']   = '.' . $path;
+          $config['allowed_types'] = 'gif|jpg|png';
+
+          $this->load->library('upload', $config);
+
+          if ( !$this->upload->do_upload('tiny_image')) {
+               echo $this->upload->display_errors();
+          } else {
+               $upload_data = $this->upload->data();
+               $config['image_library'] = 'gd2';
+               $config['source_image'] = $upload_data['full_path'];
+               $config['create_thumb'] = FALSE;
+               $config['maintain_ratio'] = TRUE;
+               $config['width']         = 750;
+               $config['height']       = 500;
+
+               $this->load->library('image_lib', $config);
+               $this->image_lib->resize();
+               echo $path . $upload_data['file_name'];
+          }
+    }
 }

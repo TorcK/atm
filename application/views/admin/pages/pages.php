@@ -1,22 +1,7 @@
      <? $this->load->view('admin/inc/head'); ?>
-     <? if (isset($current->id) && $current->id) {?>
-         <script type="text/javascript" src="<?=site_url('js/admin/ckeditor/ckeditor.js');?>"></script>
-         <script type="text/javascript" src="<?=site_url('js/admin/ckfinder/ckfinder.js');?>"></script>
-         <script type="text/javascript">
-         $(document).ready(function(){
-             /*var ckeditor = CKEDITOR.replace('page-editor');
-             AjexFileManager.init({
-                 returnTo: 'ckeditor',
-                 editor: ckeditor,
-                 skin: 'light'
-             });*/
-             var editor = CKEDITOR.replace( 'page-editor' );
-             CKFinder.SetupCKEditor( editor, '<?=site_url('js/admin/ckfinder/');?>' );
-         })
-         </script>
-     <? } ?>
      <script src="<?=site_url('/www/js/admin/pages.js');?>"></script>
      <script src="http://malsup.github.com/jquery.form.js"></script> 
+     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
      <? if ($edit_page_id) {?>
           <script>
                $( document ).ready(function() {

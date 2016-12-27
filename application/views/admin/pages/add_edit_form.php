@@ -9,8 +9,7 @@
           $cat_id = $one->category_id;
      }
 ?>
-
-<div class="col-md-6">
+<div class="col-md-12">
      <form method="post" id="add-edit" name="add-edit">
           <a name="add_edit"></a>
           <fieldset class="add-edit">
@@ -37,4 +36,6 @@
           </fieldset>
           <input type="button" onclick="return add_edit_page_form_submit();" value="-->"/> 
      </form>
+     <input type="hidden" id="tiny_field_name" />
+     <input id="tiny_image" type="file" onchange="tinyImageSubmit();">
 </div>
