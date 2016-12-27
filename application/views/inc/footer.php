@@ -1,4 +1,4 @@
-<footer class="container">
+<footer class="container-fulid">
      ©<?=date('Y',time());?> <a href="/">at-motors.com.ua</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">контакты</a>
 </footer>
 <script>

@@ -6,8 +6,8 @@ body {
      background: url('/www/images/bg.png');
 }
 
-.container {
-     background: #000;     
+.container-top { 
+     background-image: url('/www/images/top-bg.png');
 }
 .no-padding { padding: 0px;}
 
@@ -38,6 +38,7 @@ body {
      border-radius: 0px;
      height: 87px;
      background-image: url('/www/images/top-bg.png');
+     border:none;
 }
 .dropdown-menu{
      background-color:#000;
@@ -57,7 +58,7 @@ body {
 }
 
 /* footer */
-footer.container {
+footer.container-fulid {
      background-image: url('/www/images/footer-bg.png');
      background-position: top;
      background-color: #fff;
