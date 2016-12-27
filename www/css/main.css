@@ -50,6 +50,12 @@ body {
      background-color: #69be28;
 }
 
+@media (max-width: 767px) {
+  .navbar-inverse .navbar-collapse {
+    background-color: #000;
+  }
+}
+
 /* footer */
 footer.container {
      background-image: url('/www/images/footer-bg.png');

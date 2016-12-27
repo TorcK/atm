@@ -5,3 +5,7 @@ body {
 .add-edit-form {
      display: none;
 }
+
+#tiny_image {
+     display: none;
+}

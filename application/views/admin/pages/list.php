@@ -11,7 +11,7 @@
                 $zebra = $zebra == 'zebra-hi' ? 'zebra-lo' : 'zebra-hi';?>
                <tr class="<?=$zebra;?>">
                     <td><?=$onePage->name;?></td>
-                    <td><?=substr($onePage->text,0,100);?>...</td>
+                    <td><?=substr(strip_tags($onePage->text),0,100);?>...</td>
                     <td><?=$onePage->title?'+':'<b style="color:red;">нет</b>'?></td>
                     <td><?=$onePage->description?'+':'<b style="color:red;">нет</b>'?></td>
                     <td>

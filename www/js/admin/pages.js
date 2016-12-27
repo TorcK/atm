@@ -1,5 +1,6 @@
 function add_edit_page_form_submit()
 {
+     $('#formText').val(tinyMCE.activeEditor.getContent());
      $('#add-edit').ajaxSubmit({
           url: "/admin/pages/add_edit/",
           success:   after_add_edit,
@@ -14,6 +15,7 @@ function after_add_edit(data, status_text)
 {
     $('#message').text(data.message);
     update_list();
+    alert('Готово!');
 }
 
 function update_list()
@@ -52,7 +54,7 @@ function load(id)
                     plugins: [
                          'advlist autolink lists link image charmap print preview anchor',
                          'searchreplace visualblocks code fullscreen',
-                         'insertdatetime media table contextmenu paste code'
+                         'insertdatetime media table contextmenu paste code autoresize'
                     ],
                     toolbar: 'undo redo | insert | styleselect | bold italic |' +
                          'alignleft aligncenter alignright alignjustify | ' +
@@ -63,7 +65,10 @@ function load(id)
                               $('#tiny_field_name').val(field_name);
                               $('#tiny_image').click();
                          }
-                    }
+                    },
+                    image_class_list: [
+                         {title: '', value: 'img-responsive'}
+                    ]
                });
           },
           "json"
