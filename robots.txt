@@ -1,0 +1,12 @@
+Sitemap: http://at-motors.com.ua/sitemap/sitemap.xml
+User-agent: *
+
+Disallow: /*.js$
+Disallow: /*.css$
+
+Disallow: /cgi-bin/
+Disallow: /www/
+Disallow: /vendor/
+Disallow: /system/
+
+Allow: /

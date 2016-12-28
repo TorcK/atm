@@ -55,6 +55,8 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['contact'] = 'main/contact';
 $route['view/(:num)'] = 'main/view/$1';
+$route['sitemap/sitemap.xml'] = 'main/sitemap';
+
 //Admin
 $route['admin/login'] = 'admin/main/login';
 $route['admin/logout'] = 'admin/main/logout';
