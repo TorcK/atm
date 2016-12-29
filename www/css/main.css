@@ -85,6 +85,7 @@ footer a img {margin-top: -6px;}
 
 /* index */
 .index-logo {
-     max-width: 200px;
-     float: right;
+    float: left;
+    max-width: 175px;
+    padding: 10px;
 }
