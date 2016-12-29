@@ -69,6 +69,7 @@ footer.container-fulid {
 }
 footer, footer a { color:#000; }
 footer a:hover { color:#69be28; }
+footer a img {margin-top: -6px;}
 
 /* main */
 .main {
