@@ -1,5 +1,5 @@
 <footer class="container-fulid">
-     ©<?=date('Y',time());?> <a href="/">at-motors.com.ua</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#">контакты</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     ©<?=date('Y',time());?> <a href="/">at-motors.com.ua</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="/contacts">контакты</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
      <a href="https://www.facebook.com/AtmKharkiv/" target="_blank"><img src="<?=site_url('/www/images/facebook-icon.png');?>" alt="AT Motors Facebook"/></a>
 </footer>
 <script>
