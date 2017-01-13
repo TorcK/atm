@@ -43,33 +43,48 @@ function remove(id)
      return false;
 }
 
+/**
+ * init tinymce editor for #formText
+ * @returns {undefined}
+ */
+function tiny_init()
+{
+     tinymce.remove();
+     tinymce.init({
+          selector: '#formText',
+          plugins: [
+               'advlist autolink lists link image charmap print preview anchor',
+               'searchreplace visualblocks code fullscreen',
+               'insertdatetime media table contextmenu paste code autoresize'
+          ],
+          toolbar: 'undo redo | insert | styleselect | bold italic |' +
+               'alignleft aligncenter alignright alignjustify | ' +
+               'bullist numlist outdent indent | link image',
+
+          file_browser_callback: function(field_name, url, type, win) {
+               if(type=='image') {
+                    $('#tiny_field_name').val(field_name);
+                    $('#tiny_image').click();
+               }
+          },
+          image_class_list: [
+               {title: '', value: 'img-responsive'}
+          ]
+     });
+}
+
+/**
+ * Load page and init tiny editor
+ * @param {int} id
+ * @returns {Boolean}
+ */
 function load(id)
 {
      $('div#add-edit-form').show();
      $.post("/admin/pages/load_edit_form_html/" + id,
           function(data){
                $('#add-edit-form').html(data.html);
-               tinymce.init({
-                    selector: '#formText',
-                    plugins: [
-                         'advlist autolink lists link image charmap print preview anchor',
-                         'searchreplace visualblocks code fullscreen',
-                         'insertdatetime media table contextmenu paste code autoresize'
-                    ],
-                    toolbar: 'undo redo | insert | styleselect | bold italic |' +
-                         'alignleft aligncenter alignright alignjustify | ' +
-                         'bullist numlist outdent indent | link image',
-
-                    file_browser_callback: function(field_name, url, type, win) {
-                         if(type=='image') {
-                              $('#tiny_field_name').val(field_name);
-                              $('#tiny_image').click();
-                         }
-                    },
-                    image_class_list: [
-                         {title: '', value: 'img-responsive'}
-                    ]
-               });
+               tiny_init();
           },
           "json"
      );
@@ -95,4 +110,24 @@ function tinyImageSubmit()
                $('#' + field_name).val(data);
           }
      });
+}
+
+/**
+ * Click to Add Page button <br/>
+ * @returns {undefined}
+ */
+function add_page()
+{
+     if ($('div#add-edit-form').css('display') == "none") {
+          $('div#add-edit-form').show();
+          tiny_init();
+     } else {
+          tinymce.remove();
+          $('input[name=id]').val('');
+          $('input[name=name]').val('');
+          $('textarea[name=text]').val('');
+          $('textarea[name=title]').val('');
+          $('textarea[name=description]').val('');
+          tiny_init();
+     }
 }

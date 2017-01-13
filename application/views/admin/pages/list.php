@@ -16,7 +16,7 @@
                     <td><?=$onePage->description?'+':'<b style="color:red;">нет</b>'?></td>
                     <td>
                          <a href="#" title="Удалить категорию и все статьи" onclick="return remove(<?=$onePage->id?>);">[Удалить]</a>&nbsp;&nbsp;&nbsp;
-                         <a href="#" title="Редактировать категорию" onclick="return load(<?=$onePage->id?>);">[Редактировать]</a>
+                         <a href="#edit" title="Редактировать категорию" onclick="load(<?=$onePage->id?>);">[Редактировать]</a>
                     </td>
                </tr>
           <? } ?>

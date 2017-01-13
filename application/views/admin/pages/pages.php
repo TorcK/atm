@@ -14,7 +14,8 @@
 <body>
      <? $this->load->view('admin/inc/top'); ?>
      <div class="container main">
-          <button type="button" class="btn btn-default" onclick="return show_hide($('div#add-edit-form'));">Добавить статью</button>
+          <button type="button" class="btn btn-default" onclick="add_page();">Добавить статью</button>
+          <a name="edit"></a>
           <div id="add-edit-form" class="add-edit-form">
                  <? $this->load->view('admin/pages/add_edit_form'); ?>
           </div>
